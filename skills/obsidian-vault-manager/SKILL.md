@@ -50,13 +50,25 @@ Notes should be placed in folders corresponding to their `category` to maintain 
 
 ## Command Reference (Obsidian CLI)
 
-Use the `obsidian` CLI via shell execution.
+Use the `obsidian` CLI via shell execution. For complex multi-step operations (like creating a note with full frontmatter or updating an MOC), compose them using the base commands below.
 
 **Note Operations:**
 - `obsidian create name="Note Name" content="# Header" silent` (Use `silent` to avoid interrupting the user)
 - `obsidian read file="Note Name"`
 - `obsidian append file="Note Name" content="New content"`
 - `obsidian property:set name="status" value="active" file="Note Name"`
+
+**Specialized Zettelkasten Workflows (Agentic Composition):**
+
+- **Create Zettel**: 
+  1. Use `obsidian create` with the full YAML frontmatter in the `content` argument.
+  2. Follow with `obsidian property:set` if specific properties need independent verification.
+- **MOC Update (Connectivity)**:
+  1. Identify category.
+  2. `obsidian search query="[[<category> MOC]]"` to find the target.
+  3. `obsidian append file="<MOC Name>" content="- [[<New Note Name>]]"` to update the graph.
+- **Sync to Directory**:
+  1. After creation, use `mv` or `obsidian move` (if supported) to ensure the file is in `~/Notes/<category>/<file>.md`.
 
 **Search & Discovery:**
 - `obsidian search query="search term" limit=10`
