@@ -5,7 +5,11 @@ description: Manage Helfrid's Obsidian Zettelkasten vault. Use for all vault int
 
 # Obsidian Vault Manager
 
-This skill governs all interactions with Helfrid's Obsidian vault at `/Users/hh65/Notes`. It wraps the `obsidian` CLI and `obsidian eval` (for metadataCache queries). Obsidian must be running.
+This skill governs all interactions with Helfrid's Obsidian vault. It wraps the `obsidian` CLI and `obsidian eval` (for metadataCache queries). Obsidian must be running.
+
+**Vault path:** `/Users/hh65/Notes`
+
+When targeting files directly (e.g. via Read/Edit tools), all paths are relative to this root. When using the `obsidian` CLI, use `file=` (name only) or `path=` (relative from vault root).
 
 ---
 
