@@ -81,14 +81,25 @@ See `references/progress_log_format.md` for the entry format. The log is the chr
 
 ### Start
 
-**Step 1 — Find the active MOC (this is also Step 1 of the Layered Retrieval):**
+**Step 1 — Run the full MOC scan (Layered Retrieval Step 1):**
 
-1. Check `CLAUDE.md` (Claude Code) or the project description (Claude Desktop) for an `Active project:` line naming a MOC.
-2. If found → skip the scan, read that MOC directly, report: *"Active MOC: [[MOCName]] — next task: <next_task>"*
-3. If not found → run the Layered Retrieval Step 1 eval (all MOC summaries). Use the result to identify the best fit for the session topic and report: *"No active MOC set. Based on the session context I'll use [[MOCName]] — confirm or redirect."* The scan result is already in context for further retrieval — do not run it again.
-4. If no suitable MOC can be identified → report: *"No active MOC set and I couldn't identify a clear fit from the vault. Please name the MOC or project to work under."*
+Always run the eval query over all MOC summaries at session start. This scan serves two purposes simultaneously:
+- **Orientation** — identify the active MOC for this session
+- **Serendipity** — surface unexpected connections across the vault (Warburg Principle)
 
-**Step 2 — Orient:**
+Do not skip this scan even when an active MOC is named in `CLAUDE.md`.
+
+**Step 2 — Establish the active MOC:**
+
+1. If `CLAUDE.md` (Claude Code) or the project description (Claude Desktop) names an `Active project:` MOC → that is the anchor. Read it in full. Report: *"Active MOC: [[MOCName]] — next task: <next_task>"*
+2. If not set → use the scan result to identify the best fit for the session topic. Report: *"No active MOC set. Based on the session context I'll use [[MOCName]] — confirm or redirect."*
+3. If no fit found → report: *"No active MOC set and I couldn't identify a clear fit. Please name the MOC or project to work under."*
+
+**Step 3 — Apply the Warburg Principle to the scan result:**
+
+With the full MOC summary list in context, check whether any other MOC genuinely reframes or enriches the session topic in a non-obvious way. If so, surface it once: *"[[OtherMOC]] may be relevant here because..."* If nothing stands out, say nothing. The scan result stays in context for the rest of the session — do not re-run it.
+
+**Step 4 — Orient within the active MOC:**
 - Check `next_task` and `status` in frontmatter → this is where to continue from
 - The Bases view surfaces linked notes — pull specific ones only as the work requires
 
