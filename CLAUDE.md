@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Active Project
+
+Active project: [[&ZettelKastenMemory]] — build obsidian-cli based vault memory system for Claude and OpenClaw
+
+At session start, read the `&ZettelKastenMemory` MOC in the Obsidian vault, check `next_task` in frontmatter, and follow the session protocol in the `obsidian-vault-manager` skill.
+
 ## What This Repo Is
 
 A collection of Agent Skills for working with Obsidian vaults, following the [Agent Skills specification](https://agentskills.io/specification). Skills are compatible with Claude Code, Codex CLI, and OpenCode.
