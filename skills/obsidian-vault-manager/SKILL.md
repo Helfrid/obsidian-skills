@@ -81,11 +81,11 @@ See `references/progress_log_format.md` for the entry format. The log is the chr
 
 ### Start
 
-**Step 1 — Find the active MOC:**
+**Step 1 — Find the active MOC (this is also Step 1 of the Layered Retrieval):**
 
 1. Check `CLAUDE.md` (Claude Code) or the project description (Claude Desktop) for an `Active project:` line naming a MOC.
-2. If found → read that MOC in full and report: *"Active MOC: [[MOCName]] — next task: <next_task>"*
-3. If not found → run the Step 1 eval query to scan all MOC summaries, identify the best fit for the current session topic, and report: *"No active MOC set. Based on the session context I'll use [[MOCName]] — confirm or redirect."*
+2. If found → skip the scan, read that MOC directly, report: *"Active MOC: [[MOCName]] — next task: <next_task>"*
+3. If not found → run the Layered Retrieval Step 1 eval (all MOC summaries). Use the result to identify the best fit for the session topic and report: *"No active MOC set. Based on the session context I'll use [[MOCName]] — confirm or redirect."* The scan result is already in context for further retrieval — do not run it again.
 4. If no suitable MOC can be identified → report: *"No active MOC set and I couldn't identify a clear fit from the vault. Please name the MOC or project to work under."*
 
 **Step 2 — Orient:**
