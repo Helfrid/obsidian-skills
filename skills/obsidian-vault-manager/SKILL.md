@@ -80,11 +80,17 @@ See `references/progress_log_format.md` for the entry format. The log is the chr
 ## Session Protocol
 
 ### Start
-1. Read the active project MOC in full (short by design — What/Why/How/When + frontmatter)
-2. Check `next_task` and `status` in frontmatter → this is where to continue from
-3. The Bases view lists linked notes — pull specific ones only as the work requires
 
-The active project MOC is named in `CLAUDE.md` (Claude Code) or the project description (Claude Desktop).
+**Step 1 — Find the active MOC:**
+
+1. Check `CLAUDE.md` (Claude Code) or the project description (Claude Desktop) for an `Active project:` line naming a MOC.
+2. If found → read that MOC in full and report: *"Active MOC: [[MOCName]] — next task: <next_task>"*
+3. If not found → run the Step 1 eval query to scan all MOC summaries, identify the best fit for the current session topic, and report: *"No active MOC set. Based on the session context I'll use [[MOCName]] — confirm or redirect."*
+4. If no suitable MOC can be identified → report: *"No active MOC set and I couldn't identify a clear fit from the vault. Please name the MOC or project to work under."*
+
+**Step 2 — Orient:**
+- Check `next_task` and `status` in frontmatter → this is where to continue from
+- The Bases view surfaces linked notes — pull specific ones only as the work requires
 
 ### During
 - Consult the vault via the layered retrieval protocol (see below) as needed
