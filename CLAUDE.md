@@ -4,10 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Active Project
 
-Active project: [[&ZettelKastenMemory]] — build obsidian-cli based vault memory system for Claude and OpenClaw
-
-At session start, read the `&ZettelKastenMemory` MOC in the Obsidian vault, check `next_task` in frontmatter, and follow the session protocol in the `obsidian-vault-manager` skill.
-
+At the start of every session:                                                                                                                                                                                                                                              
+  1. Use the obsidian-vault-manager skill — run the full MOC scan, then anchor to [[&ZettelKastenMemory]] (sub-project) and [[@LabRAG]] (top-level domain).
+  2. Read [[&ZettelKastenMemory_progresslog]] to get current project state. If it doesn't exist, create it.                                                                                                                                                                              
+                                                                                                                                                                                                                                                                              
+  During and at the end of every session:                                                                                                                                                                                                                                     
+  3. Append to [[&ZettelKastenMemory_progresslog]] when a key decision is made, a feature is built, or the session ends — following the Did / Decided / Next entry format.   
+  
 ## What This Repo Is
 
 A collection of Agent Skills for working with Obsidian vaults, following the [Agent Skills specification](https://agentskills.io/specification). Skills are compatible with Claude Code, Codex CLI, and OpenCode.
